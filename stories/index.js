@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from 'react'
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
@@ -17,7 +17,8 @@ import Empty from "components/Appointment/Empty.js";
 import Show from "components/Appointment/Show.js";
 import Confirm from "components/Appointment/Confirm.js";
 import Status from "components/Appointment/Status.js";
-import Error from "components/Appointment/Error.js"
+import Error from "components/Appointment/Error.js";
+import Form from "components/Appointment/Form.js";
 
 
 //Button story
@@ -113,6 +114,7 @@ const interviewer = {
     ))
     .add("Clickable", () => (
         <InterviewerListItem
+            id={interviewer.id}  
           name={interviewer.name}
           avatar={interviewer.avatar}
           setInterviewer={() => action("setInterviewer")(interviewer.id)}
@@ -164,3 +166,21 @@ storiesOf("Appointment", module)
   .add("Confirm", ()=> <Confirm message="Delete the appointment?" onCancel={action("onCancel")} onConfirm={action("onConfirm")}/>)
   .add("Status", () => <Status message="Deleting"/>)
   .add("Error", () => <Error message="Could not delete appointment." onClose={action("onClose")}/>)
+  .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")}/>)
+  .add("Edit", () => <Form student="Oscar Mankiewicz" interviewer={0} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")}/>)
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="4pm" />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+        id={1}
+        time="4pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
