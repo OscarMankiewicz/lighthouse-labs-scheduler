@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import InterviewerList from "../InterviewerList";
 import Button from "../Button";
+import useVisualMode from "../../hooks/useVisualMode";
+
+const EMPTY = "EMPTY";
 
 export default function Form (props) {
     const [student, setStudent] = useState(props.student || "");
     const [interviewer, setInterviewer] = useState(props.interviewer || null);
+    const { back } = useVisualMode(EMPTY);
 
     const reset = () => {
         setStudent('');
@@ -13,10 +17,9 @@ export default function Form (props) {
 
     const cancel = () => {
         reset();
-        props.onCancel();
+        back();
     };
-
-
+    
     return (
         <main className="appointment__card appointment__card--create">
             <section className="appointment__card-left">
@@ -38,7 +41,7 @@ export default function Form (props) {
             </section>
             <section className="appointment__card-right">
                 <section className="appointment__actions">
-                    <Button danger onClick={cancel}>Cancel</Button>
+                    <Button danger onClick={props.cancel}>Cancel</Button>
                     <Button confirm onClick={props.onSave}>Save</Button>
                 </section>
             </section>
