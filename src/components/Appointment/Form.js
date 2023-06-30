@@ -7,7 +7,7 @@ const EMPTY = "EMPTY";
 
 export default function Form (props) {
     const [student, setStudent] = useState(props.student || "");
-    const [interviewer, setInterviewer] = useState(props.interviewer || null);
+    const [interviewer, setInterviewer] = useState(props.interviewer || "");
     const { back } = useVisualMode(EMPTY);
 
     const reset = () => {
@@ -19,7 +19,7 @@ export default function Form (props) {
         reset();
         back();
     };
-    
+
     return (
         <main className="appointment__card appointment__card--create">
             <section className="appointment__card-left">
@@ -42,7 +42,7 @@ export default function Form (props) {
             <section className="appointment__card-right">
                 <section className="appointment__actions">
                     <Button danger onClick={props.cancel}>Cancel</Button>
-                    <Button confirm onClick={props.onSave}>Save</Button>
+                    <Button confirm onClick={() => props.onSave(student, interviewer)}>Save</Button>
                 </section>
             </section>
         </main>
