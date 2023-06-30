@@ -114,10 +114,10 @@ const interviewer = {
     ))
     .add("Clickable", () => (
         <InterviewerListItem
-            id={interviewer.id}  
+          id={interviewer.id}
           name={interviewer.name}
           avatar={interviewer.avatar}
-          setInterviewer={() => action("setInterviewer")(interviewer.id)}
+          setInterviewer={action("setInterviewer")} 
         />
     ));
 
@@ -144,14 +144,15 @@ const interviewers = [
       <InterviewerList
         interviewers={interviewers}
         interviewer={3}
+        selected
       />
     ))
     .add("Clickable", () => (
-      <InterviewerList
-        interviewers={interviewers}
-        onChange={action("setInterviewer")}
-      />
-    ));
+        <InterviewerList
+          interviewers={interviewers}
+          onChange={action("setInterviewer")}
+        />
+      ));
 
 //Appointment story
 storiesOf("Appointment", module)
