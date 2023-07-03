@@ -28,7 +28,7 @@ npm run storybook
 ## Screenshots
 
 # Main Page
-
+![](docs/scheduler-main.png)
 # Appointment Creation
 
 # Deleting An Appointment
