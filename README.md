@@ -1,5 +1,8 @@
 # Interview Scheduler
 
+By: Oscar Mankiewicz
+Screenshots below Setup
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -21,3 +24,13 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Screenshots
+
+# Main Page
+
+# Appointment Creation
+
+# Deleting An Appointment
+
+# One Type Of Error
