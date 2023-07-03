@@ -33,7 +33,7 @@ export default function useApplicationData() {
 
     const {day} = state;
     
-    const appointments = getAppointmentsForDay(state, day);
+    const appointments = getAppointmentsForDay(state, state.day);
     const interviewers = getInterviewersForDay(state, day);
 
     function updateSpots(dayName, days, appointments) {
