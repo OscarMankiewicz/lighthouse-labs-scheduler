@@ -26,11 +26,11 @@ npm run storybook
 ```
 
 ## Screenshots
-
-# Main Page
+### Main Page
 ![](docs/scheduler-main.png)
-# Appointment Creation
-
-# Deleting An Appointment
-
-# One Type Of Error
+### Appointment Creation
+![](docs/scheduler-create.png)
+### Deleting An Appointment
+![](docs/scheduler-delete.png)
+### One Type Of Error
+![](docs/scheduler-error.png)
