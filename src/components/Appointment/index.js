@@ -17,6 +17,7 @@ const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
 const SAVING = "SAVING";
 const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_EDIT = "ERROR_EDIT";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
@@ -38,8 +39,10 @@ export default function Appointment(props) {
         props
         .bookInterview(props.id, interview)
         .then(() => transition(SHOW))
-        .catch(() => transition(ERROR_SAVE, true));
-    }
+        .catch((error) => {
+            transition(ERROR_EDIT, true);
+        })
+    };
 
     function deleteAppointment() {
         transition(CONFIRM);
@@ -59,6 +62,10 @@ export default function Appointment(props) {
 
     function handleErrorClose() {
         transition(SHOW)
+    }
+
+    function handleErrorSave() {
+        transition(EMPTY)
     }
 
     return (
@@ -86,7 +93,8 @@ export default function Appointment(props) {
         {mode === DELETING && <Status message="Deleting" />}
         {mode === CONFIRM && <Confirm message="Are you sure you would like to Delete?" onConfirm={confirmDelete} onCancel={back}/>}
         {mode === SAVING && <Status message="Saving" />}
-        {mode === ERROR_SAVE && <Error message="Failed to save appointment" onClose={handleErrorClose}/>}
+        {mode === ERROR_SAVE && <Error message="Failed to save appointment" onClose={handleErrorSave}/>}
+        {mode === ERROR_EDIT && <Error message="Failed to edit appointment" onClose={handleErrorClose}/>}
         {mode === ERROR_DELETE && <Error message="Failed to cancel appointment" onClose={handleErrorClose}/>}
       </article>
     );
