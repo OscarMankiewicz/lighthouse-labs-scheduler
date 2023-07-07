@@ -28,7 +28,6 @@ export default function Appointment(props) {
     };
 
     function save(name, interviewer) {
-        console.log(name, interviewer)
         const interview = {
           student: name,
           interviewer
@@ -89,12 +88,12 @@ export default function Appointment(props) {
                 interviewer={props.interview?.interviewer.id} 
             />
         )}
-        {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} cancel={back}/>}
+        {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} onCancel={back}/>}
         {mode === DELETING && <Status message="Deleting" />}
         {mode === CONFIRM && <Confirm message="Are you sure you would like to Delete?" onConfirm={confirmDelete} onCancel={back}/>}
         {mode === SAVING && <Status message="Saving" />}
         {mode === ERROR_SAVE && <Error message="Failed to save appointment" onClose={handleErrorSave}/>}
-        {mode === ERROR_EDIT && <Error message="Failed to edit appointment" onClose={handleErrorClose}/>}
+        {mode === ERROR_EDIT && <Error message="Failed to edit appointment" onClose={editAppointment}/>}
         {mode === ERROR_DELETE && <Error message="Failed to cancel appointment" onClose={handleErrorClose}/>}
       </article>
     );
