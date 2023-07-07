@@ -1,7 +1,20 @@
 # Interview Scheduler
 
 By: Oscar Mankiewicz
+
 Screenshots below Setup
+
+Link to API: https://github.com/OscarMankiewicz/scheduler-api
+
+Please install these depenancies
+
+axios
+
+@testing-library/react-hooks
+
+react-test-renderer
+
+classnames
 
 ## Setup
 
